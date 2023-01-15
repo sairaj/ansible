@@ -19,3 +19,5 @@
     - name: Printing hello from task2 of play2
       ansible.builtin.debug:
         msg: Hello from play2 of task2
+
+# ansible-playbook -i inventory -e ansible_user=centos -e ansible_password=DevOps321 01-sample.yaml
