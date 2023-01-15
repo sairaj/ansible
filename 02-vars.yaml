@@ -2,8 +2,8 @@
   hosts: all
   vars:
     URL: play.google.com
-  # vars_files:
-  #   - demo-vars.yaml
+  vars_files:
+    - demo-vars.yaml
   # vars_prompt:
   #   - name: URL
   #     prompt: Enter URL value
@@ -19,3 +19,7 @@
         msg: printing local variable {{ URL }}
       vars:
         URL: local.google.com
+
+    - name: printing client url
+      ansible.builtin.debug:
+        msg: printing client url {{ CLI_URL }}
