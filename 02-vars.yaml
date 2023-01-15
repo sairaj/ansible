@@ -12,4 +12,4 @@
   tasks:
     - name: Printing URL
       ansible.builtin.debug:
-        msg: {{ URL }}
+        msg: "{{ URL }}"
