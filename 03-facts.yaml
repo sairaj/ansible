@@ -10,3 +10,10 @@
     - name: printing mac address 
       ansible.builtin.debug:
         msg: Mac address is {{ansible_default_ipv4.macaddress}}
+
+- name: Demo on facts mine
+  hosts: prod
+  tasks:
+    - name: task1
+      ansible.builtin.debug:
+        msg: Os distribution = {{ ansible_distribution }}
