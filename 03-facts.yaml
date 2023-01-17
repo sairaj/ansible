@@ -3,10 +3,10 @@
 - name: Demo on facts   
   hosts: all 
   tasks:
-    - name: ansible facts printing
-      ansible.builtin.debug:
-        vars : ansible_facts
-        
+    # - name: ansible facts printing
+    #   ansible.builtin.debug:
+    #     vars : ansible_facts
+
     - name: task1 
       ansible.builtin.debug:
         msg: OS Distribution = {{ansible_distribution}}
