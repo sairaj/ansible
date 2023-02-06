@@ -1,50 +1,55 @@
-- name: Downloading node resources
-  ansible.builtin.shell: curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
+- name: Calling Nodejs Function
+  include_role:
+    name: common
+    tasks_from: nodejs
 
-- name: Downloading node package
-  ansible.builtin.package:
-    name: nodejs
-    state: present
+# - name: Downloading node resources
+#   ansible.builtin.shell: curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
 
-- name: create the user roboshop
-  ansible.builtin.user:
-    name: "{{APPUSER}}"
-    comment: roboshop service account
+# - name: Downloading node package
+#   ansible.builtin.package:
+#     name: nodejs
+#     state: present
 
-- name: downloading and extracting
-  ansible.builtin.archive:
-    src: https://github.com/stans-robot-project/catalogue/archive/main.zip
-    dest: /tmp/
-    remote_src: yes
+# - name: create the user roboshop
+#   ansible.builtin.user:
+#     name: "{{APPUSER}}"
+#     comment: roboshop service account
 
-- name: cleanup of old content
-  ansible.builtin.file:
-    path: /home/{{APPUSER}}/{{COMPONENT}}/
-    state: absent
+# - name: downloading and extracting
+#   ansible.builtin.archive:
+#     src: https://github.com/stans-robot-project/catalogue/archive/main.zip
+#     dest: /tmp/
+#     remote_src: yes
 
-- name: copy & move the folder 
-  ansible.builtin.copy:
-    src: /tmp/{{APPUSER}}-main/
-    dest: /home/{{APPUSER}}/{{COMPONENT}}/
-    remote_src: yes
-    owner: "{{APPUSER}}"
-    group: "{{APPUSER}}"
+# - name: cleanup of old content
+#   ansible.builtin.file:
+#     path: /home/{{APPUSER}}/{{COMPONENT}}/
+#     state: absent
 
-- name: install npm in catalogue folder
-  community.general.npm:
-    path: /home/{{APPUSER}}/{{COMPONENT}}/
+# - name: copy & move the folder 
+#   ansible.builtin.copy:
+#     src: /tmp/{{APPUSER}}-main/
+#     dest: /home/{{APPUSER}}/{{COMPONENT}}/
+#     remote_src: yes
+#     owner: "{{APPUSER}}"
+#     group: "{{APPUSER}}"
 
-- name: copy the systemd service file
-  ansible.builtin.copy:
-    src: systemd.service
-    dest: /etc/systemd/system/{{COMPONENT}}.service
+# - name: install npm in catalogue folder
+#   community.general.npm:
+#     path: /home/{{APPUSER}}/{{COMPONENT}}/
 
-- name: Restarting service
-  ansible.builtin.systemd:
-    state: started
-    name: {{COMPONENT}}
+# - name: copy the systemd service file
+#   ansible.builtin.copy:
+#     src: systemd.service
+#     dest: /etc/systemd/system/{{COMPONENT}}.service
 
-- name: set-hostname
-  ansible.builtin.shell: set-hostname {{COMPONENT}}
+# - name: Restarting service
+#   ansible.builtin.systemd:
+#     state: started
+#     name: {{COMPONENT}}
+
+# - name: set-hostname
+#   ansible.builtin.shell: set-hostname {{COMPONENT}}
 
 
