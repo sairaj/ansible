@@ -10,6 +10,7 @@ pipeline {
                 sh "env"
                 sh "echo runs only on feature branch"
                 sh "echo lint cheks are completed."
+                sh "echo hostname"
             }
         }  
 
