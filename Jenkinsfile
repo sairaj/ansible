@@ -21,6 +21,7 @@ pipeline {
                 sh "ansible-playbook robot-dryrun.yml -e COMPONENT=mongodb -e ansible_user=${SSH_CRED_USR} -e ansible_password=${SSH_CRED_PSW} -e ENV=dev"
             }
         }
+// pushing changes to feature branch
 
         // stage('Runs against Main') {
         //     when { branch 'main' }
