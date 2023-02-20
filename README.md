@@ -3,8 +3,8 @@
 # ansible all -i inventory -m shell -a uptime
 # above command to execute shell commands on different servers. It will give error becz of no authentication
 
-# ansible all -i inventory -e ansible_user=centos -e ansible_password=DevOps321 -m shell -a uptime
-# ansible all -i inventory -e ansible_user=centos -e ansible_password=DevOps321 -m shell -a "df -h"
+# ansible all -i inventory -e ansible_user=centos -e ansible_password=pwd -m shell -a uptime
+# ansible all -i inventory -e ansible_user=centos -e ansible_password=pwd -m shell -a "df -h"
 
 # it will run only on that dev/qa/prod machines
 # ansible dev/qa/prod -i inventory -e ansible_user=centos -e ansible_password=DevOps321 -m shell -a "df -h"
